@@ -26,6 +26,7 @@ return {
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
+    local mason_path = require('mason-core.path')
 
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
@@ -86,11 +87,6 @@ return {
 
     -- Install golang specific config
     require('dap-go').setup()
-    require('dap-python').setup()
-
-    dap.adapters.sh = {
-      type = "executable",
-      command = '~/.local/share/nvim/mason/packages/bash-debug-adapter/',
-    }
+    require('dap-python').setup(mason_path.package_prefix('debugpy') .. '/venv/bin/python')
   end,
 }
