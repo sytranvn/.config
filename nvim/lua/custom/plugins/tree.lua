@@ -8,9 +8,12 @@ return {
     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     "MunifTanjim/nui.nvim",
   },
-  config = function ()
+  config = function()
+    vim.keymap.set('n', '<leader>t', ':Neotree toggle<cr>', { desc = "Toggle [T]ree" })
+
     require('neo-tree').setup {
-       filesystem = {
+      close_if_last_window = true,
+      filesystem = {
         filtered_items = {
           visible = true, -- This is what you want: If you set this to `true`, all "hide" just mean "dimmed out"
           hide_dotfiles = false,
@@ -26,6 +29,10 @@ return {
         show_unloaded = true,
       },
       git_status = {
+        symbols = {
+          modified = "*",
+          untracked = "%",
+        },
         window = {
           position = "float",
           mappings = {
