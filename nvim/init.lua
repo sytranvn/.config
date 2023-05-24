@@ -172,6 +172,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'nvim-treesitter/nvim-tree-docs',
     },
     build = ":TSUpdate",
   },
@@ -305,6 +306,7 @@ require('nvim-treesitter.configs').setup {
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = true,
+  tree_docs = { enable = true },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },

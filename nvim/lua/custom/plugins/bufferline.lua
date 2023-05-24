@@ -12,7 +12,13 @@ return {
     end
 
 
-    require('bufferline').setup {}
+    require('bufferline').setup {
+      options = {
+        buffer_close_icon = '󰅖',
+        modified_icon = '●',
+        close_icon = '',
+      }
+    }
     nmap('<C-c>', function()
         if require('bufferline.utils').get_buf_count() > 1 then
           require('bufferline.commands').cycle(1)
