@@ -1,4 +1,4 @@
 layout_conda() {
   envs=($(conda info --json | jq -r '.envs_dirs | .[]')) 
-  PATH_add ${envs[@]/%/$1}
+  PATH_add ${envs[@]/%//$1/bin}
 }
