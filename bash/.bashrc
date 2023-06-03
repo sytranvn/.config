@@ -2,7 +2,7 @@ case "$TERM" in
     xterm-color|*-256color|xterm-kitty) color_prompt=yes;;
 esac
 
-export EDITOR=vim
+export EDITOR=nvim
 
 force_color_prompt=yes
 
@@ -20,9 +20,14 @@ fi
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM="auto"
-PS1='${debian_chroot:+($debian_chroot)}\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\]@\[\033[0;36m\]\h:\w\[\033[0;32m\]$(__git_ps1)\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\]\$\[\033[0m\] '
-alias b='cd -'
-alias cdp='cd -P'
-alias adb_cast='scrcpy --display 0 --bit-rate 32M --window-title "Drawer"  --stay-awake '
-alias vim=nvim
+os="$(uname -s)"
+case $os in 
+    Linux*)
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\]@\[\033[0;36m\]\h:\w\[\033[0;32m\]$(__git_ps1)\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\]\$\[\033[0m\] ';;
+    Darwin*)
+	PS1='change me \$ ';;
+    *)
+	PS1='\$ ';;
+esac
 
+source ~/.config/bash/.aliases

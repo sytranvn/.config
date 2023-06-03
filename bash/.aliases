@@ -1,0 +1,8 @@
+alias b='cd -'
+alias cdp='cd -P'
+alias adb_cast='scrcpy --display 0 --bit-rate 32M --window-title "Drawer"  --stay-awake '
+alias vim=nvim
+alias brc='nvim ~/.config/bash/.bashrc'
+alias brl='source ~/.bashrc'
+alias vrc='nvim ~/.config/nvim'
+alias arc='nvim ~/.config/bash/.aliases'
