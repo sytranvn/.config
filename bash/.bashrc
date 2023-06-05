@@ -30,4 +30,5 @@ case $os in
 	PS1='\$ ';;
 esac
 
+export PATH="~/.config/bin:$PATH"
 source ~/.config/bash/.aliases
