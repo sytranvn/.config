@@ -31,11 +31,23 @@ return {
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
-      automatic_setup = true,
+      automatic_setup = false,
 
       -- You can provide additional configuration to the handlers,
       -- see mason-nvim-dap README for more information
-      handlers = {},
+      handlers = {
+        function(config)
+          -- Keep original functionality
+          require('mason-nvim-dap').default_setup(config)
+        end,
+        python = function(config)
+          config.adapters = {
+            type = 'executable',
+            command = '/usr/bin/python3',
+            args = { '-m', 'debugpy.adapter' }
+          }
+        end
+      },
 
       -- You'll need to check that you have the required things installed
       -- online, please don't ask me how to install them :)
@@ -44,7 +56,6 @@ return {
         'delve',
         'python',
         'js',
-        'node2',
         'cppdbg',
         'bash',
       },
@@ -85,8 +96,18 @@ return {
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
+
+    dap.adapters.codelldb = {
+      type = 'server',
+      port = "${port}",
+      executable = {
+        command = mason_path.package_prefix('codelldb') .. '/codelldb',
+        args = { "--port", "${port}" },
+      }
+    }
     -- Install golang specific config
     require('dap-go').setup()
     require('dap-python').setup(mason_path.package_prefix('debugpy') .. '/venv/bin/python')
+    require('debug.codelldb')
   end,
 }
