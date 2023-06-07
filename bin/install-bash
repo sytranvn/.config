@@ -1,6 +1,7 @@
-#!/usr/bin/env bash
 
 if [[ ! "$BASH_VERSION" = 3.* ]]; then
+	echo $BASH_VERSION
+	echo zz
 	exit 0
 fi
 
@@ -12,7 +13,13 @@ fi
 brew install bash
 echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells
 chsh -s /opt/homebrew/bin/bash
-echo '[ -f ~/.config/bash/.bashrc ] && . ~/.config/bash/.bashrc' >> ~/.profile
-echo '[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"' >> ~/.profile 
+echo '# auto setup bash
+[ -f ~/.config/bash/.bashrc ] && . ~/.config/bash/.bashrc
+[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+# end auto setup bash' >> ~/.profile 
 
 echo Bash has been installed. Quit terminal and restart.
+
+# vi: ft=sh
+

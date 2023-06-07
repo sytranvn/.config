@@ -19,5 +19,7 @@ source ~/.config/bash/.aliases
 source ~/.config/bash/.git-prompt.sh
 
 # direnv hook
-eval "$(direnv hook bash)"
+if which direnv >/dev/null; then
+    eval "$(direnv hook bash)"
+fi
 
