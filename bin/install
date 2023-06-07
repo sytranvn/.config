@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+bindir=$(dirname $0)
+export PATH="$bindir:$PATH"
+if [ "$(uname -s)" = Darwin ]; then
+	macos=yes
+fi
+export macos
+
+install-kitty
+
+install-neovim
+
+install-bash
+

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ "$(uname -s)" != "Darwin" ]; then
+if [ ! "$macos" = yes ]; then
 	echo This script only run on MacOS
 	exit 1
 fi
@@ -12,6 +12,7 @@ fi
 brew install bash
 echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells
 chsh -s /opt/homebrew/bin/bash
-echo '[ -f ~/.config/bash/.bashrc ] && . ~/.config/bash/.bashrc' | tee -a ~/.profile >/dev/null
+echo '[ -f ~/.config/bash/.bashrc ] && . ~/.config/bash/.bashrc' >> ~/.profile
+echo '[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"' >> ~/.profile 
 
 echo Bash has been installed. Quit terminal and restart.
