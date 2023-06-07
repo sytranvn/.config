@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if [ "$(uname -s)" != "Darwin" ]; then
+	echo This script only run on MacOS
+	exit 1
+fi
+if [ "$(arch)" != "arm64" ]; then
+	echo This script only run on MacOS M1, checkout bash/README.md for manual steps.
+	exit 1
+fi
+
+brew install bash
+echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells
+chsh -s /opt/homebrew/bin/bash
+echo '[ -f ~/.config/bash/.bashrc ] && . ~/.config/bash/.bashrc' | tee -a ~/.profile >/dev/null
+
+echo Bash has been installed. Quit terminal and restart.
