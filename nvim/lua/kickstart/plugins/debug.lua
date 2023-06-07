@@ -54,10 +54,8 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
-        'python',
-        'js',
-        'cppdbg',
-        'bash',
+        'debugpy',
+        'codelldb',
       },
     }
 
@@ -107,7 +105,7 @@ return {
     }
     -- Install golang specific config
     require('dap-go').setup()
-    require('dap-python').setup(mason_path.package_prefix('debugpy') .. '/venv/bin/python')
+    require('debug.python')
     require('debug.codelldb')
   end,
 }
