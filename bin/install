@@ -9,6 +9,8 @@ export macos
 
 install-kitty
 
+install-direnv
+
 install-neovim
 
 install-bash

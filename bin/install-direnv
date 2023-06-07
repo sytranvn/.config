@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+if which direnv >/dev/null; then
+	exit 0
+fi
+
+if [ "$macos" = yes ];then
+	brew install direnv
+else
+	sudo apt install direnv
+fi
+

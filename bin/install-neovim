@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+
+if which nvim >/dev/null; then
+	exit 0
+fi
+
 echo Install neovim
 if [ "$macos" = yes ]; then
 	brew install neovim

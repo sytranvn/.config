@@ -17,3 +17,7 @@ esac
 export PATH="~/.config/bin:$PATH"
 source ~/.config/bash/.aliases
 source ~/.config/bash/.git-prompt.sh
+
+# direnv hook
+eval "$(direnv hook bash)"
+

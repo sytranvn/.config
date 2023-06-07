@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-if [ ! "$macos" = yes ]; then
-	echo This script only run on MacOS
-	exit 1
+if [[ ! "$BASH_VERSION" = 3.* ]]; then
+	exit 0
 fi
-if [ "$(arch)" != "arm64" ]; then
+
+if [ ! "$macos" = yes ] || [ ! "$(arch)" = "arm64" ]; then
 	echo This script only run on MacOS M1, checkout bash/README.md for manual steps.
 	exit 1
 fi
