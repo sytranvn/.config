@@ -15,8 +15,6 @@ echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells
 chsh -s /opt/homebrew/bin/bash
 echo '# auto setup bash
 [ -f ~/.config/bash/.bashrc ] && . ~/.config/bash/.bashrc
-[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
-[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 # end auto setup bash' >> ~/.profile 
 
 echo Bash has been installed. Quit terminal and restart.
