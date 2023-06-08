@@ -30,4 +30,5 @@ source ~/.config/bash/.git-prompt.sh
 if which direnv >/dev/null; then
     eval "$(direnv hook bash)"
 fi
-
+# gcloud hook
+[ -f ~/.gcrc ] && source ~/.gcrc

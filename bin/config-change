@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+	echo "$(basename $0) <message>"
+	exit 1
+fi
+cd ~/.config
+git add .
+git commit -m "$1"
+git push
+
