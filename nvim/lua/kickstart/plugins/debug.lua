@@ -69,6 +69,7 @@ return {
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end)
 
+    vim.api.nvim_create_user_command('DapClose', dapui.close, {})
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
     dapui.setup {
