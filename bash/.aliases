@@ -6,7 +6,7 @@ alias vim=nvim
 alias brc='nvim ~/.config/bash/.bashrc'
 alias brl='source ~/.bashrc'
 if [ "$(uname -s)" == "Darwin" ]; then
-	alias brl="source ~/.profile"
+	alias brl="source ~/.bash_profile"
 fi
 alias vrc='nvim ~/.config/nvim'
 alias arc='nvim ~/.config/bash/.aliases'
