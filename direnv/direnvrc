@@ -1,4 +1,11 @@
+#!/usr/bin/env bash
+
 layout_conda() {
-  envs=($(conda info --json | jq -r '.envs_dirs | .[]')) 
-  PATH_add ${envs[@]/%//$1/bin}
+  envs=($(conda info --json | python3 -c "import sys, json; print('\n'.join(json.load(sys.stdin)['envs_dirs']))")) 
+  echo $envs
+  for env in ${envs[@]}; do
+  	if [ -d $env ]; then
+  		PATH_add ${env/%//$1/bin}
+	fi
+  done
 }
