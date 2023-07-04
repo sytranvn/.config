@@ -1,12 +1,16 @@
+# vi: ft=sh :
+function message {
+	echo [$(basename $0)] "$@"
+}
 
-if [[ $BASH_VERSINFO -lt 4 ]]; then
-	echo $BASH_VERSION
+if [[ $BASH_VERSINFO -gt 4 ]]; then
+	message Bash $BASH_VERSION installed
 	exit 0
 fi
 
 if [ ! "$macos" = yes ] || [ ! "$(arch)" = "arm64" ]; then
-	echo This script only run on MacOS M1, checkout bash/README.md for manual steps.
-	exit 1
+	message 'This script only run on MacOS M1, checkout bash/README.md for manual steps.'
+	exit 0
 fi
 
 brew install bash
@@ -16,7 +20,5 @@ echo '# auto setup bash
 [ -f ~/.config/bash/.bashrc ] && . ~/.config/bash/.bashrc
 # end auto setup bash' >> ~/.profile 
 
-echo Bash has been installed. Quit terminal and restart.
-
-# vi: ft=sh
+message Bash has been installed. Quit terminal and restart.
 

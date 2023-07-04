@@ -26,7 +26,7 @@ if [ "$macos" = yes ]; then
     export PATH
 fi
 
-export PATH="~/.config/bin:$PATH"
+export PATH="$HOME/.config/bin:$HOME/.local/bin:$PATH"
 source ~/.config/bash/.aliases
 source ~/.config/bash/.git-prompt.sh
 

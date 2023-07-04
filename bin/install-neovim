@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
+alias echo='echo [neovim] '
 if which nvim >/dev/null; then
+	echo
 	exit 0
 fi
 
@@ -8,8 +10,18 @@ echo Install neovim
 if [ "$macos" = yes ]; then
 	brew install neovim
 else
+	if ! which gcc > /dev/null; then
+		sudo apt install build-essential
+	fi
 	sudo add-apt-repository ppa:neovim-ppa/stable
-	sudo apt-get update
+	IFS='.' version_parts=($(apt show neovim | grep Version: | cut -d' ' -f2))
+	if [ ${version_parts[0]} -gt 0 ] || [ ${version_parts[1]} -ge 8 ]; then
+		:
+	else
+		echo Current neovim from ppa is lower than 0.8, install from source
+		sudo add-apt-repository ppa:neovim-ppa/unstable
+		sudo apt-get update
+	fi
 	sudo apt-get install -y neovim python3-neovim
 fi
 echo Install neovim completed

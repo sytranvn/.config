@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 if which direnv >/dev/null; then
+	echo [$(basename $0)] direnv $(direnv --version) installed
 	exit 0
 fi
 

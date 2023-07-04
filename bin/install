@@ -4,6 +4,8 @@ bindir=$(dirname $0)
 export PATH="$bindir:$PATH"
 if [ "$(uname -s)" = Darwin ]; then
 	macos=yes
+else
+	sudo apt update
 fi
 export macos
 
@@ -15,3 +17,4 @@ install-neovim
 
 install-bash
 
+install-node
