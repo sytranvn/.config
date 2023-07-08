@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+if [ "$macos" = "yes"]; then
+	:
+else
+	mkdir -p $HOME/.fonts
+	cd $HOME/.fonts
+	curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/NerdFontsSymbolsOnly.zip -O
+	unzip NerdFontsSymbolsOnly.zip
+	rm NerdFontsSymbolsOnly.zip
+	fc-cache -fv
+	echo Installed nerd font. Restart terminal.
+fi

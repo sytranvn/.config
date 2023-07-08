@@ -3,18 +3,21 @@
 bindir=$(dirname $0)
 export PATH="$bindir:$PATH"
 if [ "$(uname -s)" = Darwin ]; then
-	macos=yes
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+	brew bundle install ~/.brew/Brewfile # TODO: test
+
+	echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells
+	chsh -s /opt/homebrew/bin/bash
+	echo '# auto setup bash
+	[ -f ~/.config/bash/.bashrc ] && . ~/.config/bash/.bashrc
+	# end auto setup bash' >> ~/.profile 
 else
 	sudo apt update
+	install-kitty
+
+	install-direnv
+
+	install-neovim
+
+	install-node
 fi
-export macos
-
-install-kitty
-
-install-direnv
-
-install-neovim
-
-install-bash
-
-install-node
