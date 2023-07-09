@@ -24,6 +24,10 @@ if [ "$macos" = yes ]; then
     PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
     PATH="$PATH:$HOME/.docker/bin"
     export PATH
+else
+    if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+	. /etc/bash_completion
+    fi
 fi
 
 export PATH="$HOME/.config/bin:$HOME/.local/bin:$PATH"
