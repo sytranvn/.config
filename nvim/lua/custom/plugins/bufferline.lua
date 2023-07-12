@@ -29,7 +29,7 @@ return {
       end,
       "Close current buffer"
     )
-    nmap('<C-n>', function() require('bufferline').cycle(1) end, "Next buffer")
-    nmap('<C-p>', function() require('bufferline').cycle(-1) end, "Previous buffer")
+    nmap('gn', function() require('bufferline').cycle(1) end, "Next buffer")
+    nmap('gp', function() require('bufferline').cycle(-1) end, "Previous buffer")
   end
 }
