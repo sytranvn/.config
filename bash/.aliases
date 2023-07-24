@@ -11,6 +11,6 @@ fi
 alias vrc='nvim ~/.config/nvim'
 alias arc='nvim ~/.config/bash/.aliases'
 alias path='echo -e ${PATH//:/\\n}'
-
+alias ll='ls -lahG'
 
 

@@ -2,7 +2,7 @@ return {
   "giusgad/pets.nvim",
   version = "*",
   dependencies = {
-    "MunifTanjim/nui.nvim", "giusgad/hologram.nvim"
+    "MunifTanjim/nui.nvim"
   },
   event = "VeryLazy",
   config = function()
