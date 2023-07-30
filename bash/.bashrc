@@ -18,16 +18,9 @@ case $os in
 esac
 
 if [ "$macos" = yes ]; then
-    PATH="/opt/homebrew/bin:$PATH"
-    [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
-    # Add other path
-    PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
-    PATH="$PATH:$HOME/.docker/bin"
-    export PATH
+    . $HOME/.config/bash/.macrc
 else
-    if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-	. /etc/bash_completion
-    fi
+    . $HOME/.config/bash/.linuxrc
 fi
 
 export PATH="$HOME/.config/bin:$HOME/.local/bin:$PATH"
