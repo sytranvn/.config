@@ -26,7 +26,7 @@ fi
 export PATH="$HOME/.config/bin:$HOME/.local/bin:$PATH"
 source ~/.config/bash/.aliases
 source ~/.config/bash/.git-prompt.sh
-
+export GPG_TTY=$(tty)
 # direnv hook
 if which direnv >/dev/null; then
     eval "$(direnv hook bash)"
