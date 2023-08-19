@@ -3,3 +3,6 @@
 	email = other@example.com
 	signingkey = ABC!
 
+[url "git@github.com-other:"]
+	insteadOf = git@github.com:
+
