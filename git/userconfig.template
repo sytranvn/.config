@@ -1,0 +1,12 @@
+[user]
+	name = "Do not use"
+
+[includeIf "gitdir:~/Code/sytranvn/"]
+    path = ./sytranvnconfig
+    
+[includeIf "gitdir:~/Code/oss/"]
+    path = ./sytranvnconfig
+    
+[includeIf "gitdir:.config/"]
+    path = ./sytranvnconfig
+
