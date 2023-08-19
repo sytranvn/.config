@@ -1,0 +1,11 @@
+IgnoreUnknown UseKeychain
+Host github.com
+  Hostname github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/default
+Host github.com-sytranvn
+  Hostname github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/sytranvn
