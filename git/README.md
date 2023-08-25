@@ -1,3 +1,7 @@
+# Usage
+```
+cp ~/.config/git/.gitconfig ~/.gitconfig
+```
 # References
 
 ## git.includeIf

@@ -31,5 +31,9 @@ return {
     )
     nmap('gn', function() require('bufferline').cycle(1) end, "Next buffer")
     nmap('gp', function() require('bufferline').cycle(-1) end, "Previous buffer")
+    vim.api.nvim_create_user_command('BufferLineCloseOthers', function()
+      vim.cmd('BufferLineCloseLeft')
+      vim.cmd('BufferLineCloseRight')
+    end, {})
   end
 }

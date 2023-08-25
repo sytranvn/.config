@@ -1,5 +1,7 @@
 [user]
 	name = "Do not use"
+[gpg]
+	format = ssh
 
 [includeIf "gitdir:~/Code/sytranvn/"]
     path = ./sytranvnconfig
@@ -10,3 +12,5 @@
 [includeIf "gitdir:.config/"]
     path = ./sytranvnconfig
 
+[includeIf "gitdir:~/Code/sytd/"]
+    path = ./sytdconfig
