@@ -1,2 +1,2 @@
-require("sytd.fold")
+require("sytd.fold").setup({})
 require("sytd.git")

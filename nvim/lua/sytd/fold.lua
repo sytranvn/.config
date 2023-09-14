@@ -1,10 +1,10 @@
 local M = {}
 
 M.setup = function(config)
-	local vim = vim
-	local opt = vim.opt
-	opt.foldmethod = "expr"
-	opt.foldexpr = "nvim_treesitter#foldexpr()"
+	vim.opt.fillchars = { fold = " " }
+	vim.opt.foldmethod = "indent"
+	vim.opt.foldenable = false
+	vim.opt.foldlevel = 99
 end
 
 return M
