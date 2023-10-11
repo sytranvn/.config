@@ -5,7 +5,7 @@ return {
   version = "*",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    -- "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     "MunifTanjim/nui.nvim",
   },
   config = function()
@@ -30,7 +30,7 @@ return {
       git_status = {
         symbols = {
           -- Change type
-          added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+          added     = "",
           modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
           deleted   = "✖", -- this can only be used in the git_status source
           renamed   = "", -- this can only be used in the git_status source
@@ -38,7 +38,7 @@ return {
           untracked = "",
           unstaged  = "",
           ignored   = "",
-          staged    = "",
+          staged    = "",
           conflict  = "",
         },
         window = {

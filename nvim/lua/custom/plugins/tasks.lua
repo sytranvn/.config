@@ -20,11 +20,11 @@ return {
           ignore_stderr = false,
         },
       },
-      save_before_run = true,      -- If true, all files will be saved before executing a task.
-      params_file = 'neovim.json', -- JSON file to store module and task parameters.
+      save_before_run = true,     -- If true, all files will be saved before executing a task.
+      params_file = '.nvim.json', -- JSON file to store module and task parameters.
       quickfix = {
-        pos = 'botright',          -- Default quickfix position.
-        height = 12,               -- Default height.
+        pos = 'botright',         -- Default quickfix position.
+        height = 12,              -- Default height.
       }
     })
     local id
