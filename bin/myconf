@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+	echo "$(basename $0) <command>"
+	echo "               <command>: git commands"
+	exit 1
+fi
+cd ~/.config
+git "$@"
+
