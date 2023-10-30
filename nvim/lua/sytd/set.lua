@@ -7,8 +7,9 @@ vim.opt.scrolloff = 10
 vim.o.hlsearch = false
 
 -- Make line numbers default
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.cursorline = true
 
 -- reload buffers if content changed on disk
 vim.o.autoread = true
