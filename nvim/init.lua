@@ -394,7 +394,16 @@ end
 local servers = {
   clangd = {},
   -- gopls = {},
-  pyright = {},
+  pylsp = {
+    plugins = {
+      flake8 = {
+        enabled = true
+      },
+      pylint = {
+        enabled = true
+      }
+    }
+  },
   -- rust_analyzer = {},
   tsserver = {},
   lua_ls = {
