@@ -10,5 +10,10 @@ cd $font_dir
 curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/$NERD_FONT_VERSION/NerdFontsSymbolsOnly.zip -O
 unzip NerdFontsSymbolsOnly.zip
 rm NerdFontsSymbolsOnly.zip
+
+curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/$NERD_FONT_VERSION/AnonymousPro.zip -O
+unzip AnonymousPro.zip
+rm AnonymousPro.zip
+
 fc-cache -rf
 echo Installed nerd font. Restart terminal.
