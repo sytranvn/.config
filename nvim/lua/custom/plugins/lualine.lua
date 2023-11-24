@@ -19,7 +19,7 @@ return {
           {
             'datetime',
             -- options: default, us, uk, iso, or your own format string ("%H:%M", etc..)
-            style = "%H:%M:%S"
+            style = "%H:%M"
           },
         }
       },
@@ -30,7 +30,7 @@ return {
         lualine_c = { 'filename' },
       },
       tabline = {
-        lualine_a = { 'buffers' },
+        lualine_a = {},
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
