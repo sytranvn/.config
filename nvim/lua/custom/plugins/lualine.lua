@@ -44,7 +44,7 @@ return {
       for _, i in ipairs(bufs) do
         if i ~= current_buf then
           if vim.api.nvim_buf_get_option(i, "modified") then
-            vim.api.nvim_echo("Unsaved buffer " .. i, false)
+            vim.api.nvim_echo({ { "Unsaved file " .. vim.api.nvim_buf_get_name(i), "WarningMsg" } }, false, {})
           else
             vim.api.nvim_buf_delete(i, {})
           end
