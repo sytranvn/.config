@@ -38,7 +38,6 @@ return {
         lualine_c = { breadcrumb },
       },
       inactive_winbar = {
-        lualine_c = { 'filename' },
       },
       tabline = {
         lualine_a = { 'filename' },
