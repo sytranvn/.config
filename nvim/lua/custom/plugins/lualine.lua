@@ -1,8 +1,19 @@
 return {
   -- Set lualine as statusline
   'nvim-lualine/lualine.nvim',
+  dependencies = {
+    "loctvl842/breadcrumb.nvim"
+  },
   -- See `:help lualine.txt`
   config = function()
+    local breadcrumb = function()
+      local breadcrumb_status_ok, breadcrumb = pcall(require, "breadcrumb")
+      if not breadcrumb_status_ok then
+        return
+      end
+      return breadcrumb.get_breadcrumb()
+    end
+
     require('lualine').setup({
       options = {
         icons_enabled = true,
@@ -24,7 +35,7 @@ return {
         }
       },
       winbar = {
-        -- lualine_c = { 'filename' },
+        lualine_c = { breadcrumb },
       },
       inactive_winbar = {
         lualine_c = { 'filename' },
