@@ -23,6 +23,10 @@ else
     . $HOME/.config/bash/.linuxrc
 fi
 
+if [ -d $HOME/go/bin ]; then
+    export PATH="$PATH:$HOME/go/bin"
+fi
+
 export PATH="$HOME/.config/bin:$HOME/.local/bin:$PATH"
 source ~/.config/bash/.aliases
 source ~/.config/bash/.git-prompt.sh
