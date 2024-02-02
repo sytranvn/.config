@@ -5,7 +5,7 @@
     path = userconfig
 
 [core]
-	excludesfile = .gitignore
+	excludesfile = ~/.config/git/.gitignore
 [rerere]
 	enabled = true
 [alias]
