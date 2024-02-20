@@ -15,8 +15,16 @@ alias ll='ls -lahG'
 alias debugpy='python -m debugpy --listen localhost:5678'
 
 for d in $(ls $HOME/Code); do
-	if [ -d "$HOME/Code/$d" ]; then
-		alias $d="cd $HOME/Code/$d"
+	if [ -d $HOME/Code/$d ]; then
+	alias $d="cd $HOME/Code/$d"
 	fi
 done
 
+alias v='nvim'
+alias config='cd ~/.config'
+for d in $(ls $HOME/.config); do
+	if [ -d $HOME/.config/$d ]; then
+		name=${d}_config
+		alias $name="cd $HOME/.config/$d"
+	fi
+done
