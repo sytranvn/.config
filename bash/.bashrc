@@ -1,3 +1,4 @@
+set -o vi
 export EDITOR=nvim
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
