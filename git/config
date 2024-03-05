@@ -1,8 +1,6 @@
 [init]
 	defaultBranch = master
 
-[include]
-    path = userconfig
 
 [core]
 	excludesfile = ~/.config/git/.gitignore
@@ -25,3 +23,21 @@
 [pull]
 	ff = only
 	rebase = true
+[rebase]
+	autoStash = true
+
+[push]
+    default = simple
+    autoSetupRemote = true
+
+[status]
+    submoduleSummary = true
+    recurse = true
+
+[fetch]
+    prune = true
+    prunetags = true
+
+[include]
+    path = userconfig
+
