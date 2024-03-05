@@ -6,3 +6,5 @@
 [url "git@github.com-other:"]
 	insteadOf = git@github.com:
 
+[core]
+sshCommand = ssh -i ~/.ssh/other
