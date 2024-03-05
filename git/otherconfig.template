@@ -7,4 +7,8 @@
 	insteadOf = git@github.com:
 
 [core]
-sshCommand = ssh -i ~/.ssh/other
+	sshCommand = ssh -i ~/.ssh/other
+
+[commit]
+	gpgsign = true
+
