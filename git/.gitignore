@@ -5,3 +5,4 @@
 .venv
 .nvimrc.lua
 .nvimrc
+.DS_Store
