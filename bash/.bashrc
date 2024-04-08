@@ -38,3 +38,7 @@ if which direnv >/dev/null; then
 fi
 # gcloud hook
 [ -f ~/.gcrc ] && source ~/.gcrc
+
+if [ -f "$HOME/.${USER}rc" ]; then
+	source "$HOME/.${USER}rc"
+fi
