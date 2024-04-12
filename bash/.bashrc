@@ -42,3 +42,19 @@ fi
 if [ -f "$HOME/.${USER}rc" ]; then
 	source "$HOME/.${USER}rc"
 fi
+
+changes="$(myconf status -s)"
+if [ ! -z "$changes" ]; then
+	echo "You have changes in your config"
+	myconf status -s
+else
+	echo "Your config is up to date"
+fi
+
+
+
+function update_config() {
+	sleep 60
+	myconf fetch
+}
+(update_config &)
