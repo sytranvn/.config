@@ -24,7 +24,7 @@ alias v='nvim'
 alias config='cd ~/.config'
 for d in $(ls $HOME/.config); do
 	if [ -d $HOME/.config/$d ]; then
-		name=${d}_config
+		name=conf_${d}
 		alias $name="cd $HOME/.config/$d"
 	fi
 done

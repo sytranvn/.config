@@ -50,9 +50,6 @@ if [ ! -z "$changes" ]; then
 else
 	echo "Your config is up to date"
 fi
-
-
-
 function update_config() {
 	sleep 60
 	myconf fetch
