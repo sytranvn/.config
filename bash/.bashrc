@@ -52,6 +52,6 @@ else
 fi
 function update_config() {
 	sleep 60
-	myconf fetch
+	myconf fetch > /dev/null
 }
 (update_config &)
