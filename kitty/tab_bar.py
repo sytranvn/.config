@@ -39,9 +39,11 @@ def _draw_right_status(screen: Screen, is_last: bool) -> int:
 
     battery = get_bat()
     song = get_song()
+    song = f" {song[:20]} " if song else ""
+
     cells = [
         (SPOTIFY_BG, screen.cursor.bg, ""),
-        (SPOTIFY_FG, SPOTIFY_BG, f"  { song[:20] } "),
+        (SPOTIFY_FG, SPOTIFY_BG, f" {song}"),
 
         (BATTERY_BG, SPOTIFY_BG, ""),
         (BATTERY_FG, BATTERY_BG, f"{battery} "),
