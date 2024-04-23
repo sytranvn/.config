@@ -7,6 +7,7 @@ sys.path.append(dir)
 import env_utils  # noqa
 
 from battery import get_bat  # noqa
+from music import get_song  # noqa
 
 import datetime  # noqa
 from kitty.fast_data_types import Screen, get_options  # noqa
@@ -22,6 +23,8 @@ from kitty.utils import color_as_int  # noqa
 opts = get_options()
 
 
+SPOTIFY_FG = as_rgb(int("ffffff", 16))
+SPOTIFY_BG = as_rgb(int("1DB954", 16))
 BATTERY_FG = as_rgb(int("ffffff", 16))
 BATTERY_BG = as_rgb(color_as_int(opts.color4))
 CLOCK_FG = as_rgb(int("ffffff", 16))
@@ -35,9 +38,13 @@ def _draw_right_status(screen: Screen, is_last: bool) -> int:
         return screen.cursor.x
 
     battery = get_bat()
+    song = get_song()
     cells = [
-        (BATTERY_BG, screen.cursor.bg, ""),
-        (BATTERY_FG, BATTERY_BG, f" {battery} "),
+        (SPOTIFY_BG, screen.cursor.bg, ""),
+        (SPOTIFY_FG, SPOTIFY_BG, f"  { song[:20] } "),
+
+        (BATTERY_BG, SPOTIFY_BG, ""),
+        (BATTERY_FG, BATTERY_BG, f"{battery} "),
 
         #(CLOCK_BG, screen.cursor.bg, ""),
         (CLOCK_FG, CLOCK_BG, datetime.datetime.now().strftime("  %H:%M ")),
