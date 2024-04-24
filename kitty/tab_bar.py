@@ -42,24 +42,25 @@ def _draw_right_status(screen: Screen, is_last: bool) -> int:
     song = f" {song[:20]} " if song else ""
 
     cells = [
-        (SPOTIFY_BG, screen.cursor.bg, ""),
-        (SPOTIFY_FG, SPOTIFY_BG, f" {song}"),
 
-        (BATTERY_BG, SPOTIFY_BG, ""),
+        (CLOCK_BG, screen.cursor.bg, ""),
         (BATTERY_FG, BATTERY_BG, f"{battery} "),
 
         # (CLOCK_BG, screen.cursor.bg, ""),
         (CLOCK_FG, CLOCK_BG, datetime.datetime.now().strftime("  %H:%M ")),
 
-        (DATE_FG, DATE_BG, datetime.datetime.now().strftime(" %Y/%m/%d")),
+        (DATE_FG, DATE_BG, datetime.datetime.now().strftime(" %Y/%-m/%-d ")),
+
+        # put this last because unicode chars can take more spaces than its length
+        (SPOTIFY_BG, BATTERY_BG, ""),
+        (SPOTIFY_FG, SPOTIFY_BG, f" {song}"),
     ]
 
     right_status_length = 0
     for _, _, cell in cells:
         right_status_length += len(cell)
 
-    icons = 3  # make calculation a bit weird, i don't know
-    draw_spaces = screen.columns - screen.cursor.x - right_status_length - icons
+    draw_spaces = screen.columns - screen.cursor.x - right_status_length
     if draw_spaces > 0:
         screen.draw(" " * draw_spaces)
 
