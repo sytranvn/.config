@@ -44,16 +44,13 @@ def _draw_right_status(screen: Screen, is_last: bool) -> int:
     song += (len(song.encode()) - len(song.encode('ascii', 'replace'))) * " "
 
     cells = [
-
         (CLOCK_BG, screen.cursor.bg, ""),
         (BATTERY_FG, BATTERY_BG, f"{battery} "),
 
-        # (CLOCK_BG, screen.cursor.bg, ""),
         (CLOCK_FG, CLOCK_BG, datetime.datetime.now().strftime("  %H:%M ")),
 
         (DATE_FG, DATE_BG, datetime.datetime.now().strftime(" %Y/%-m/%-d ")),
 
-        # put this last because unicode chars can take more spaces than its length
         (SPOTIFY_BG, BATTERY_BG, ""),
         (SPOTIFY_FG, SPOTIFY_BG, f" {song}"),
     ]
