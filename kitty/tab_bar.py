@@ -41,8 +41,7 @@ def _draw_right_status(screen: Screen, is_last: bool) -> int:
     song = get_song()
 
     song = f" {song[:20]}" if song else ""
-    if len(song) != len(song.encode()):  # contain unicode characters
-        song += len(song) * " "
+    song += (len(song.encode()) - len(song.encode('ascii', 'replace'))) * " "
 
     cells = [
 
