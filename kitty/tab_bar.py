@@ -48,17 +48,18 @@ def _draw_right_status(screen: Screen, is_last: bool) -> int:
         (BATTERY_BG, SPOTIFY_BG, ""),
         (BATTERY_FG, BATTERY_BG, f"{battery} "),
 
-        #(CLOCK_BG, screen.cursor.bg, ""),
+        # (CLOCK_BG, screen.cursor.bg, ""),
         (CLOCK_FG, CLOCK_BG, datetime.datetime.now().strftime("  %H:%M ")),
 
-        (DATE_FG, DATE_BG, datetime.datetime.now().strftime("  %Y/%m/%d ")),
+        (DATE_FG, DATE_BG, datetime.datetime.now().strftime(" %Y/%m/%d")),
     ]
 
     right_status_length = 0
     for _, _, cell in cells:
         right_status_length += len(cell)
 
-    draw_spaces = screen.columns - screen.cursor.x - right_status_length
+    icons = 3  # make calculation a bit weird, i don't know
+    draw_spaces = screen.columns - screen.cursor.x - right_status_length - icons
     if draw_spaces > 0:
         screen.draw(" " * draw_spaces)
 
