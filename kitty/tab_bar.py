@@ -41,16 +41,14 @@ def _draw_right_status(screen: Screen, is_last: bool) -> int:
     song = get_song()
 
     song = f" {song[:20]}" if song else ""
-    song += (len(song.encode()) - len(song.encode('ascii', 'replace'))) * " "
+    count_u = len(song.encode()) - len(song.encode("ascii", "replace"))
+    song += int(count_u * .075) * " "
 
     cells = [
         (CLOCK_BG, screen.cursor.bg, ""),
         (BATTERY_FG, BATTERY_BG, f"{battery} "),
-
         (CLOCK_FG, CLOCK_BG, datetime.datetime.now().strftime("  %H:%M ")),
-
         (DATE_FG, DATE_BG, datetime.datetime.now().strftime(" %Y/%-m/%-d ")),
-
         (SPOTIFY_BG, BATTERY_BG, ""),
         (SPOTIFY_FG, SPOTIFY_BG, f" {song}"),
     ]
@@ -92,6 +90,3 @@ def draw_tab(
         is_last,
     )
     return end
-
-
-
