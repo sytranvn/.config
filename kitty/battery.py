@@ -9,7 +9,7 @@ def get_linux_bat():
         subprocess.run([f"{dir}/.kenv/bin/pip", "install", "psutil"])
         import psutil
 
-        return psutil.sensors_battery()
+    return psutil.sensors_battery()
 
 
 class Battery():
