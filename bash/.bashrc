@@ -51,7 +51,6 @@ else
 	echo "Your config is up to date"
 fi
 function update_config() {
-	sleep 60
 	myconf fetch > /dev/null
 }
 (update_config &)
