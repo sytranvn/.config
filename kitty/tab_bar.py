@@ -41,8 +41,9 @@ def _draw_right_status(screen: Screen, is_last: bool) -> int:
     song = get_song()
 
     song = f" {song[:20]}" if song else ""
-    count_u = len(song.encode()) - len(song.encode("ascii", "replace"))
-    song += int(count_u * .65) * " "
+    # song += int(sum([1 for i in range(len(song)) if song[i] > 'ỿ']) * 0.5) * " "
+    song += int(sum([1 for i in range(len(song)) if 'ỿ' < song[i]]) * 1.5) * " " + " "
+    print(f"'{song}'.")
     cells = [
         (CLOCK_BG, screen.cursor.bg, ""),
         (BATTERY_FG, BATTERY_BG, f"{battery} "),
