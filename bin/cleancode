@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+_pwd=$PWD
+for d in $PWD/*; do
+cd $d
+if [ -d .git ]; then
+  if [[ ! -z $(git status -s) ]]; then
+    echo $d
+    git status -s | wc -l 
+  fi
+fi
+cd $_pwd
+done
