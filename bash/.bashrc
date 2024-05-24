@@ -54,3 +54,5 @@ function update_config() {
 	myconf fetch > /dev/null
 }
 (update_config &)
+
+mail 
