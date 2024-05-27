@@ -31,6 +31,13 @@ fi
 export PATH="$HOME/.config/bin:$HOME/.local/bin:$PATH"
 source ~/.config/bash/.aliases
 source ~/.config/bash/.git-prompt.sh
+
+for f in $(ls $HOME/.config/bash/aliases.d); do
+    if [ -f $HOME/.config/bash/aliases.d/$f ]; then
+	    echo source "$HOME/.config/bash/aliases.d/$f"
+	    source "$HOME/.config/bash/aliases.d/$f"
+    fi
+done
 export GPG_TTY=$(tty)
 # direnv hook
 if which direnv >/dev/null; then
