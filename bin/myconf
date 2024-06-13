@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-alias git="git -C $HOME/.config "
+_git() {
+	git -C "$HOME/.config" "$@"
+}
 
 if [ -z "$1" ]; then
 	echo "$(basename $0) <command>"
@@ -8,5 +10,5 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
-git "$@"
+_git "$@"
 

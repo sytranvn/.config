@@ -3,13 +3,13 @@ import platform
 import os
 from datetime import datetime
 
-from psutil import NoSuchProcess
 dir = os.path.dirname(__file__)
 spotify_path = f"{dir}/.spotify"
 
 
 def get_song():
     if platform.system() == 'Darwin':
+        return ""
         if not os.path.exists(spotify_path) or datetime.now().timestamp() - os.stat(spotify_path).st_mtime < 10:
             with open(spotify_path, "r") as f:
                 return f.read().rstrip()
