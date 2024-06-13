@@ -1,7 +1,8 @@
 from datetime import datetime
 from os.path import dirname, exists, stat
 import platform
-
+import os
+dir = os.path.dirname(__file__)
 
 def get_linux_bat():
     try:

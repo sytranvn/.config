@@ -35,6 +35,14 @@ def get_ubuntu_song():
             try:
                 p = psutil.Process(int(f.read()))
                 if p.cmdline() == cmd:
+                    # TODO: check actual process status to determine if we kill
+                    # or resume it
+                    # $ ps <PID>
+                    # currently seeing Ss is sleeping status but it still
+                    # triggered by event
+                    # if p.status() in ('sleeping', 'stopped'):
+                    #     from signal import SIGTERM
+                    #     p.send_signal(SIGTERM)
                     if os.path.exists(spotify_path):
                         song = open(spotify_path, "r").read()
                         return song
@@ -52,7 +60,7 @@ def start_dbus_monitor():
     from dbus.mainloop.glib import DBusGMainLoop
     from gi.repository import GLib  # noqua
 
-    def notifications(bus, message):
+    def notifications(_, message):
         args = message.get_args_list()
         if args[0] == "Spotify":
             with open(spotify_path, "w") as f:
