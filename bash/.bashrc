@@ -60,5 +60,6 @@ function update_config() {
 	myconf fetch > /dev/null
 }
 (update_config &)
-
-mail 
+if which mail > /dev/null; then
+    mail 
+fi
