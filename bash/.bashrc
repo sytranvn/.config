@@ -61,5 +61,5 @@ function update_config() {
 }
 (update_config &)
 if which mail > /dev/null; then
-    mail 
+    echo q | mail 
 fi
