@@ -1,7 +1,7 @@
 import subprocess
 import platform
 import os
-from datetime import datetime
+import shutil
 
 dir = os.path.dirname(__file__)
 spotify_path = f"{dir}/.spotify"
@@ -9,24 +9,17 @@ spotify_path = f"{dir}/.spotify"
 
 def get_song():
     if platform.system() == 'Darwin':
-        return ""
-        if not os.path.exists(spotify_path) or datetime.now().timestamp() - os.stat(spotify_path).st_mtime < 10:
-            with open(spotify_path, "r") as f:
-                return f.read().rstrip()
+        npc = shutil.which("nowplaying-cli")
+        if npc:
+            return subprocess.check_output([npc, "get", "title"]).decode().strip()
         else:
-            song = subprocess.check_output(
-                f"osascript {dir}/osx_status.script".split()).decode()
-            with open(spotify_path, "w") as f:
-                f.write(song)
-
-        return open(spotify_path, "r").read()
+            return ""
     else:
         return get_ubuntu_song()
 
 
 def get_ubuntu_song():
     import psutil
-    import os
 
     dbuspid_path = f"{dir}/.dbpid"
     cmd = ["python3", f"{dir}/music.py"]
