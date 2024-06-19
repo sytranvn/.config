@@ -36,19 +36,19 @@ DATE_BG = as_rgb(color_as_int(opts.color4))
 def _draw_right_status(screen: Screen, is_last: bool) -> int:
     if not is_last:
         return screen.cursor.x
-
-    battery = get_bat()
-    song = get_song()
+    now = datetime.datetime.now()
+    cache_now = now.replace(second=now.second//10, microsecond=0)
+    battery = get_bat(cache_now)
+    song = get_song(cache_now)
 
     song = f" {song[:20]}" if song else ""
     # song += int(sum([1 for i in range(len(song)) if song[i] > 'ỿ']) * 0.5) * " "
     song += int(sum([1 for i in range(len(song)) if 'ỿ' < song[i]]) * 1.5) * " " + " "
-    print(f"'{song}'.")
     cells = [
         (CLOCK_BG, screen.cursor.bg, ""),
         (BATTERY_FG, BATTERY_BG, f"{battery} "),
-        (CLOCK_FG, CLOCK_BG, datetime.datetime.now().strftime("  %H:%M ")),
-        (DATE_FG, DATE_BG, datetime.datetime.now().strftime(" %Y/%-m/%-d ")),
+        (CLOCK_FG, CLOCK_BG, now.strftime("  %H:%M ")),
+        (DATE_FG, DATE_BG, now.strftime(" %Y/%-m/%-d ")),
         (SPOTIFY_BG, BATTERY_BG, ""),
         (SPOTIFY_FG, SPOTIFY_BG, f" {song}"),
     ]

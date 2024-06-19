@@ -2,18 +2,26 @@ import subprocess
 import platform
 import os
 import shutil
+from kitty.types import run_once
+from functools import lru_cache
 
 dir = os.path.dirname(__file__)
 spotify_path = f"{dir}/.spotify"
 
 
-def get_song():
+@run_once
+def get_npc():
+    return shutil.which("nowplaying-cli") or shutil.which("/opt/homebrew/bin/nowplaying-cli")
+
+
+@lru_cache(maxsize=1)
+def get_song(d):
     if platform.system() == 'Darwin':
-        npc = shutil.which("nowplaying-cli")
+        npc = get_npc()
         if npc:
             return subprocess.check_output([npc, "get", "title"]).decode().strip()
         else:
-            return ""
+            return "\b"
     else:
         return get_ubuntu_song()
 

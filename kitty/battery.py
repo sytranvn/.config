@@ -1,4 +1,5 @@
 from datetime import datetime
+from functools import lru_cache
 from os.path import dirname, exists, stat
 import platform
 import os
@@ -37,7 +38,8 @@ def get_macos_bat():
 
         with open(dirname(__file__) + "/.bat", "w") as f:
             f.write(f"{percent} {pwer_plugged}")
-        Battery(int(percent), pwer_plugged)
+
+        return Battery(int(percent), pwer_plugged)
 
     if (
         exists(dirname(__file__) + "/.bat")
@@ -54,7 +56,8 @@ def get_macos_bat():
     return Battery(eval(percent), eval(pwer_plugged))
 
 
-def get_bat():
+@lru_cache(maxsize=1)
+def get_bat(d):
     if platform.system() == "Darwin":
         bat = get_macos_bat()
     else:
