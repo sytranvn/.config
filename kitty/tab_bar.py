@@ -37,7 +37,7 @@ def _draw_right_status(screen: Screen, is_last: bool) -> int:
     if not is_last:
         return screen.cursor.x
     now = datetime.datetime.now()
-    cache_now = now.replace(second=now.second//10, microsecond=0)
+    cache_now = now.replace(microsecond=0)
     battery = get_bat(cache_now)
     song = get_song(cache_now)
 
