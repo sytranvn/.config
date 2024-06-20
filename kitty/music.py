@@ -18,10 +18,13 @@ def get_npc():
 def get_song(d):
     if platform.system() == 'Darwin':
         npc = get_npc()
-        if npc:
-            return subprocess.check_output([npc, "get", "title"]).decode().strip()
+        if npc and npc:
+            song = subprocess.check_output([npc, "get", "title"]).decode().strip()
+            if song == "null":
+                return ""
+            return song
         else:
-            return "\b"
+            return ""
     else:
         return get_ubuntu_song()
 

@@ -1,9 +1,8 @@
-from datetime import datetime
 from functools import lru_cache
-from os.path import dirname, exists, stat
 import platform
 import os
 dir = os.path.dirname(__file__)
+
 
 def get_linux_bat():
     try:
@@ -24,36 +23,14 @@ class Battery:
 
 
 def get_macos_bat():
+    import re
+    from subprocess import check_output
 
-    from threading import Thread
-    import os
+    b = check_output("pmset -g batt".split(" ")).decode()
+    percent = re.search("(\\d+)%", b).group(1)
+    pwer_plugged = "AC attached;" in b
 
-    def _get_bat():
-        import re
-        from subprocess import check_output
-
-        b = check_output("pmset -g batt".split(" ")).decode()
-        percent = re.search("(\\d+)%", b).group(1)
-        pwer_plugged = "AC attached;" in b
-
-        with open(dirname(__file__) + "/.bat", "w") as f:
-            f.write(f"{percent} {pwer_plugged}")
-
-        return Battery(int(percent), pwer_plugged)
-
-    if (
-        exists(dirname(__file__) + "/.bat")
-        and os.stat(dirname(__file__) + "/.bat").st_mtime
-        < datetime.now().timestamp() - 60
-    ):
-        return _get_bat()
-
-    t = Thread(target=_get_bat)
-    t.start()
-    with open(dirname(__file__) + "/.bat", "r") as f:
-        percent, pwer_plugged = f.read().strip().split(" ")
-
-    return Battery(eval(percent), eval(pwer_plugged))
+    return Battery(int(percent), pwer_plugged)
 
 
 @lru_cache(maxsize=1)

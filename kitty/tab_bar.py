@@ -38,8 +38,8 @@ def _draw_right_status(screen: Screen, is_last: bool) -> int:
         return screen.cursor.x
     now = datetime.datetime.now()
     cache_now = now.replace(microsecond=0)
-    battery = get_bat(cache_now)
-    song = get_song(cache_now)
+    battery = get_bat(cache_now.replace(second=0))
+    song = get_song(cache_now)  # get song need to be more agressive
 
     song = f" {song[:20]}" if song else ""
     # song += int(sum([1 for i in range(len(song)) if song[i] > 'ỿ']) * 0.5) * " "
