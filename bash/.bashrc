@@ -57,7 +57,7 @@ else
 	echo "Your config is up to date"
 fi
 function update_config() {
-	myconf fetch > /dev/null
+	myconf fetch > /dev/null || true
 }
 (update_config &)
 if which mail > /dev/null; then
