@@ -13,6 +13,7 @@ alias arc='nvim ~/.config/bash/.aliases'
 alias path='echo -e ${PATH//:/\\n}'
 alias ll='ls -lahG'
 alias debugpy='python -m debugpy --listen localhost:5678'
+alias ac='autorandr --change'
 
 for d in $(ls $HOME/Code); do
 	if [ -d $HOME/Code/$d ]; then
