@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+if which dwm; then
+	alias screenshot='flameshot launcher'
+fi
