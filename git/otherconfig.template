@@ -12,3 +12,8 @@
 [commit]
 	gpgsign = true
 
+[sendemail]
+	smtpEncryption = tls
+	smtpServer = smtp.gmail.com
+	smtpUser = other@example.com
+	smtpServerPort = 587
