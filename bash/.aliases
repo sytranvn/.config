@@ -32,3 +32,4 @@ for d in $(ls $HOME/.config); do
 	fi
 done
 
+alias rr='rm -rf'

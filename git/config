@@ -1,13 +1,13 @@
 [init]
-	defaultBranch = master
+    defaultBranch = master
 
 
 [core]
-	excludesfile = ~/.config/git/.gitignore
+    excludesfile = ~/.config/git/.gitignore
 [rerere]
-	enabled = true
+    enabled = true
 [alias]
-	adog = log --all --decorate --oneline --graph
+    adog = log --all --decorate --oneline --graph
 [diff]
     tool = nvim
     guitool = kitty.gui
@@ -21,10 +21,10 @@
 [difftool "kitty.gui"]
     cmd = kitten diff $LOCAL $REMOTE
 [pull]
-	ff = only
-	rebase = true
+    ff = only
+    rebase = true
 [rebase]
-	autoStash = true
+    autoStash = true
 
 [push]
     default = simple
@@ -42,7 +42,13 @@
     path = userconfig
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[instaweb]
+    local = true
+    httpd = python3 -m http.server
+    port = 4321
+
