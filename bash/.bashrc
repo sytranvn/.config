@@ -56,11 +56,6 @@ if [ ! -z "$changes" ]; then
 else
 	echo "Your config is up to date"
 fi
-function update_config() {
-	myconf fetch > /dev/null 2>&1 || true
-}
-update_config &
-disown
 
 if which mail > /dev/null; then
     echo q | mail 
