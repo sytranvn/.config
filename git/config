@@ -8,6 +8,7 @@
     enabled = true
 [alias]
     adog = log --all --decorate --oneline --graph
+	last-tag = describe --tags --abbrev=0
 [diff]
     tool = nvim
     guitool = kitty.gui
