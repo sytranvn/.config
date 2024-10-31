@@ -1,8 +1,23 @@
 set -o vi
+
+# remove previous duplicated lines or ignore lines starting with space
+export HISTCONTROL=erasedups,ignorespace
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTSIZE=-1
+export HISTFILESIZE=-1
+
 export EDITOR=nvim
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM="auto"
+
+# MAILPATH="/var/mail/$USER?You have mail"
+export MAILCHECK=30
+
 os="$(uname -s)"
 if [ "$os" = Darwin ];then
     macos=yes
@@ -55,10 +70,6 @@ if [ ! -z "$changes" ]; then
 	myconf status -s
 else
 	echo "Your config is up to date"
-fi
-
-if which mail > /dev/null; then
-    echo q | mail 
 fi
 
 export JQ_COLORS="2;33:2;33:0;33:0;36:1;32:0;35:1;35:2;34"

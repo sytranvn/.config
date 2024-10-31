@@ -32,3 +32,5 @@ for d in $(ls $HOME/.config); do
 done
 
 alias rr='rm -rf'
+
+alias venv_active='source .venv/bin/activate'

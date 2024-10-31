@@ -53,3 +53,5 @@
     httpd = python3 -m http.server
     port = 4321
 
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
