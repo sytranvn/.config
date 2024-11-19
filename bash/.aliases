@@ -33,4 +33,4 @@ done
 
 alias rr='rm -rf'
 
-alias venv_active='source .venv/bin/activate'
+alias activate='source .venv/bin/activate'

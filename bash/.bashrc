@@ -1,4 +1,7 @@
-set -o vi
+# only use vi key binding for normal terminal
+if [ -z "$NVIM" ] && [ -z "$VIM" ] && [ -z "$VI" ]; then
+    set -o vi
+fi
 
 # remove previous duplicated lines or ignore lines starting with space
 export HISTCONTROL=erasedups,ignorespace
