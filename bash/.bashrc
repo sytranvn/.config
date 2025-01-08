@@ -10,7 +10,7 @@ export HISTCONTROL=erasedups,ignorespace
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-export HISTSIZE=-1
+export HISTSIZE=10000
 export HISTFILESIZE=-1
 
 export EDITOR=nvim
